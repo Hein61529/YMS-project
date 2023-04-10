@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>WebAuthn demo</title>
+    <link rel="icon" type="image/png" href="/webauthn-logo-icon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/webauthn-logo-icon-16x16.png" sizes="16x16" />
+    <!-- Bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap-webauthn.css" rel="stylesheet">
+    <!-- for logo on advanced menu -->
+    <link href="css/fontawesome-all.css" rel="stylesheet">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- this can't be a local file - it loads buttons.html which will fail CORS if this is a local JS file -->
+    <script src="https://buttons.github.io/buttons.js"></script>
+
+    <style type="text/css">
+        .tt-info:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
+
+</head>
+
+<body>
+    <div class="limiter" role="tablist">
+        <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+            <div class="wrap-login100">
+
+                <!-- tab header -->
+                <ul class="nav nav-tabs container-login100-form-btn">
+                    <li class="nav-item">
+                        <a href="?tab=register" class="login100-form-btn active " data-target="#register"
+                            data-toggle="tab">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="?tab=login" class="login100-form-btn" data-target="#login" data-toggle="tab">Login</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+
+                    <!-- register tab -->
+                    <div class="tab-pane fade show active" role="tabpanel" id="register">
+                        <form class="login100-form validate-form" id="register-form" name="register-form" method="post">
+
+                            <span class="login100-form-title p-b-34 p-t-27">
+                                Register
+                            </span>
+
+                            <div class="wrap-input100 validate-input" data-validate="Enter username">
+                                <input class="input100" type="text" id="username" name="username" placeholder="Username"
+                                    autofocus="autofocus">
+                                <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                            </div>
+
+                            <!-- <div class="wrap-input100 validate-input" data-validate="Enter password">
+                                <input class="input100" type="password" name="pass" placeholder="Password">
+                                <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                            </div> -->
+
+                            <div class="container-login100-form-btn">
+                                <button class="login100-form-btn" id="registerButton">
+                                    Register
+                                </button>
+                            </div>
+
+                        </form>
+
+                        <!-- <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h2>Create a New Account</h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <form id="register-form" name="register-form" method="post">
+                                        <br>
+                                        <input type="text" id="username" name="username" placeholder="Username"
+                                            autofocus="autofocus">
+                                        <br>
+                                        <br>
+                                        <input type="submit" id="registerButton" class="btn btn-success"
+                                            value="Register">
+                                    </form>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+
+                    <!-- login tab -->
+                    <div role="tabpanel " id="login" class="tab-pane fade">
+                        <form class="login100-form validate-form" id="login-form" name="login-form" method="post">
+
+                            <span class="login100-form-title p-b-34 p-t-27">
+                                Log in
+                            </span>
+
+                            <div class="wrap-input100 validate-input" data-validate="Enter username">
+                                <input class="input100" type="text" name="username" placeholder="Username"
+                                    autofocus="autofocus">
+                                <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                            </div>
+
+                           <!-- <div class="wrap-input100 validate-input" data-validate="Enter password">
+                                <input class="input100" type="password" name="pass" placeholder="Password">
+                                <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                            </div> -->
+
+                            <div class="container-login100-form-btn">
+                                <button class="login100-form-btn" id="loginButton">
+                                    Login
+                                </button>
+                            </div>
+
+                           <!-- <div class="text-center p-t-90">
+                                <a class="txt1" href="#">
+                                    Forgot Password?
+                                </a>
+                            </div> -->
+                        </form>
+                    </div>
+                    <!-- <div class="tab-pane fade" role="tabpanel" id="login">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h2>Log in to Account Using WebAuthn</h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <form id="login-form" name="login-form" method="post">
+                                        <br>
+                                        <input type="text" name="username" placeholder="Username" autofocus="autofocus">
+                                        <br>
+                                        <br>
+                                        <input type="submit" id="loginButton" class="btn btn-success" value="Login">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    </div>
+
+    <!-- accordion for advanced content -->
+    <!-- 
+            <div id="accordion">
+              <div class="card">
+                <div class="card-header" id="headingAdvanced">
+                  <h5 class="mb-0">
+                    <button id="collapseButton" class="btn btn-link" data-toggle="collapse" data-target="#collapseAdvanced" aria-expanded="false" aria-controls="collapseAdvanced">&nbsp;&nbsp;Advanced
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseAdvanced" class="collapse" aria-labelledby="headingAdvanced" data-parent="#accordion">
+ -->
+    <!-- debug output text area -->
+    <!-- 
+                    <div id="terminal" contenteditable="true">
+                    </div>
+                </div>
+              </div>
+            </div>
+ -->
+
+    <!-- Modals -->
+
+    <!-- this is the modal that pops up when webauthn is not supported -->
+    <div id="notSupportedModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">WebAuthn Not Supported</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="notSupportedBody" class="modal-body">
+                    <p>WebAuthn is not currently supported in this configuration. Please ensure you are using a secure
+                        context (https) and that your browser supports WebAuthn</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- this is the user presence modal that pops up to prompt users to "press their button" -->
+    <div id="upModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Perform User Verification</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Please perform your user verification on your authenticator now.</p>
+                    <p>If you have a U2F token, it should be flashing now. Otherwise, please press your fingerprint
+                        sensor or follow the instructions provided by your browser or operating system.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Abort</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- this is the modal that shows the final result. the content is controlled by ux-events.js -->
+    <div id="resultModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="resultHeader" class="modal-title">Whatever Complete</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="resultBody" class="modal-body">
+                    <p>Something something passed or failed or whatever. Results go here.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/ux-events.js"></script>
+    <script src="js/webauthn-simple-app/webauthn-simple-app.js"></script>
+
+    <div id="dropDownSelect1"></div>
+
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
